@@ -1,13 +1,18 @@
 <script setup>
-import { ref, reactive, computed, watch, watchEffect } from 'vue'
-import CountUp from '@/components/CountUp.vue'
-import BaseButton from './components/BaseButton.vue'
+import { ref } from 'vue'
+import ResetButton from './components/ResetButton.vue'
+import ShowCount from './components/ShowCount.vue'
+
+const totalScore = ref(0)
+const resetButton = (event) => {
+  totalScore.value = event
+}
 </script>
 <template>
-  <h1 class="red">App</h1>
-  <CountUp id="baseId" class="blue" />
-  <BaseTemplate />
-  <BaseButton id="baseId" class="blue" />
+  <ShowCount :total-score="totalScore" />
+  <button @click="totalScore++">count++</button>
+  <div style="margin-bottom: 1rem"></div>
+  <ResetButton @reset-button="resetButton" />
 </template>
 <style scoped>
 .red {
