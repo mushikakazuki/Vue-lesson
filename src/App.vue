@@ -7,9 +7,13 @@ const totalScore = ref(0)
 const resetButton = (event) => {
   totalScore.value = event
 }
+const isShow = ref(true)
 </script>
 <template>
-  <ShowCount :total-score="totalScore" />
+  <button @click="isShow = !isShow">show_select</button>
+  <template v-if="isShow">
+    <ShowCount :total-score="totalScore" />
+  </template>
   <button @click="totalScore++">count++</button>
   <div style="margin-bottom: 1rem"></div>
   <ResetButton @reset-button="resetButton" />
