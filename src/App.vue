@@ -1,27 +1,16 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import ResetButton from './components/ResetButton.vue'
-import ShowCount from './components/ShowCount.vue'
-
-const input = ref('')
-onMounted(() => {
-  input.value.focus()
-})
-const totalScore = ref(0)
-const resetButton = (event) => {
-  totalScore.value = event
-}
-const isShow = ref(true)
+import BaseCard from './components/BaseCard.vue'
 </script>
 <template>
-  <button @click="isShow = !isShow">show_select</button>
-  <template v-if="isShow">
-    <ShowCount :total-score="totalScore" />
-  </template>
-  <button @click="totalScore++">count++</button>
-  <div style="margin-bottom: 1rem"></div>
-  <ResetButton @reset-button="resetButton" />
-  <input ref="input" type="text" />
+  <BaseCard>
+    <template #header="{ pagecount, foo }">
+      <p>{{ pagecount }}</p>
+      <p>{{ foo }}</p>
+      Vue ヘッダー
+    </template>
+    Vueコース用です。
+    <template #footer> Vue フッター </template>
+  </BaseCard>
 </template>
 <style scoped>
 .red {
