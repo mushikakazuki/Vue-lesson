@@ -1,18 +1,18 @@
 <script setup>
-import { ref } from 'vue'
-import { useRefLimit } from './composables/refLimit'
-const count = ref(0)
-const { history, undo } = useRefLimit(count, ref(4))
+import { useRouter } from 'vue-router'
+const router = useRouter()
+const onOther = () => {
+  console.log('onOther')
+  router.push({ path: '/other' })
+}
 </script>
 <template>
-  <p>count:{{ count }}</p>
-  <button @click="count++">+1</button>
-  <p>history:{{ history }}</p>
-  <button @click="undo">undo</button>
+  <h1>Vue Router</h1>
+  <RouterLink :to="{ name: 'home' }">Home</RouterLink> |
+  <RouterLink :to="{ path: '/other', query: { id: 20 }, hash: '#aaa' }">Other</RouterLink>
+  <RouterView />
+
+  <button @click="$router.push({ path: '/other' })">other</button>
 </template>
 
-<style scoped>
-.red {
-  color: red;
-}
-</style>
+<style scoped></style>
