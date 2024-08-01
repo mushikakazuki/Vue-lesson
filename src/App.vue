@@ -9,7 +9,7 @@ const onOther = () => {
 <template>
   <h1>Vue Router</h1>
   <RouterLink :to="{ name: 'home' }">Home</RouterLink> |
-  <RouterLink :to="{ path: '/other', query: { id: 20 }, hash: '#aaa' }">Other</RouterLink>
+  <RouterLink :to="{ path: '/other', query: { id: 20 } }">Other</RouterLink>
   <RouterView />
 
   <button @click="$router.push({ path: '/other' })">other</button>
