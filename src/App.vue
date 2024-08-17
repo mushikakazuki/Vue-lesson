@@ -12,7 +12,7 @@ const onOther = () => {
   <RouterLink :to="{ path: '/other', query: { id: 20 } }">Other</RouterLink>
   <RouterView />
 
-  <button @click="$router.push({ path: '/other' })">other</button>
+  <button style="margin-top: 10000px" @click="$router.push({ path: '/other' })">other</button>
 </template>
 
 <style scoped></style>
