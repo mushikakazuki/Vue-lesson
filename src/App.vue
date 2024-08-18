@@ -1,18 +1,12 @@
 <script setup>
-import { useRouter } from 'vue-router'
-const router = useRouter()
-const onOther = () => {
-  console.log('onOther')
-  router.push({ path: '/other' })
-}
+import { useCounterStore } from './store/counter'
+const counterStore = useCounterStore()
+console.log(counterStore.count)
 </script>
 <template>
-  <h1>Vue Router</h1>
-  <RouterLink :to="{ name: 'home' }">Home</RouterLink> |
-  <RouterLink :to="{ path: '/other', query: { id: 20 } }">Other</RouterLink>
-  <RouterView />
-
-  <button style="margin-top: 10000px" @click="$router.push({ path: '/other' })">other</button>
+  <h1>pinia</h1>
+  <button @click="counterStore.count++">click</button>
+  <p>{{ counterStore.count }}</p>
 </template>
 
 <style scoped></style>

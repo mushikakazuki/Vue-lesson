@@ -8,7 +8,13 @@ const router = createRouter({
     { path: '/', component: HomeView, name: 'home' },
     { path: '/other', component: () => import('@/views/OtherView.vue'), name: 'other' },
     { path: '/blogs/:id?', component: () => import('@/views/BlogView.vue'), name: 'blogs' },
-    { path: '/:all(.*)*', props: true, component: NotFoundView, name: 'notFound' }
+    {
+      path: '/:all(.*)*',
+      props: true,
+      component: NotFoundView,
+      name: 'notFound',
+      redirect: { name: 'home' }
+    }
   ],
   scrollBehavior() {
     return {
